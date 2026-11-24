@@ -1,11 +1,13 @@
 // src/main/java/com/umc/movie/controller/MovieRecordController.java
 package com.umc.movie.controller;
 
+import com.umc.movie.config.SwaggerConfig;
 import com.umc.movie.dto.ApiResponse;
 import com.umc.movie.dto.CreateMovieRecordRequest;
 import com.umc.movie.dto.MovieRecordResponse;
 import com.umc.movie.interceptor.AuthInterceptor;
 import com.umc.movie.service.MovieRecordService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@SecurityRequirement(name = SwaggerConfig.BEARER_AUTH)
 public class MovieRecordController {
 
     private final MovieRecordService movieRecordService;
